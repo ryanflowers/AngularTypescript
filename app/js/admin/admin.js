@@ -11,4 +11,3 @@ var app;
         }]);
     })(main = app.main || (app.main = {}));
 })(app || (app = {}));
-//# sourceMappingURL=admin.js.map

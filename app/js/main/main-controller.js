@@ -4,11 +4,14 @@ var app;
     (function (main) {
         var MainController = (function () {
             function MainController($scope) {
-                $scope.title = "test";
+                var scope = $scope;
+                scope.title = "Ryan";
+                scope.setMyTitle = function (value) {
+                    scope.title = value;
+                };
             }
             return MainController;
         })();
         main.MainController = MainController;
     })(main = app.main || (app.main = {}));
 })(app || (app = {}));
-//# sourceMappingURL=main-controller.js.map
