@@ -6,8 +6,21 @@ module app.components {
                 setTitle: '&setTitle'
             },
             templateUrl: './components/basic-transclusion/basic-transclusion.html',
-            link: function (scope, ielem, attrs) {
-                scope.title = 'Charlie';
+            link: function (scope, ielem, attrs, ctrl, transclude) {
+                transclude((clone) => {
+                    angular.forEach(clone, (cloneEl) => {
+                        if(cloneEl.attributes){
+                            var tId = cloneEl.attributes.getNamedItem("transclude-to").value;
+                            var target = ielem.find('[transclude-id="' + tId + '"]');
+                            if(target.length){
+                                target.append(cloneEl);
+                            }
+                            else {
+                                cloneEl.remove;
+                            }
+                        }
+                    });
+                });
             }
         }
         return basicTransclusionDefinition;
